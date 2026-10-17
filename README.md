@@ -36,8 +36,8 @@ Aplicación web para la gestión integral de operaciones comerciales: preventas,
 
 ```bash
 # 1. Clonar el repositorio
-git clone https://github.com/JhoamSebastianMunoz/frontend_tatsoft.git
-cd frontend_tatsoft
+git clone https://github.com/JhoamSebastianMunoz/tatsoft-frontend.git
+cd tatsoft-frontend
 
 # 2. Instalar dependencias
 npm install
@@ -73,7 +73,7 @@ El servidor se inicia en `http://localhost:5173`. Los proxies definidos en `vite
 ### Estructura de carpetas
 
 ```
-frontend_tatsoft/
+tatsoft-frontend/
 ├── public/                     # Assets estáticos
 ├── src/
 │   ├── components/
