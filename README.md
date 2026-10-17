@@ -1,173 +1,36 @@
-# TATSoft - Sistema de Gestión Empresarial
+<!-- prettier-ignore -->
+<div align="center">
 
-<p align="center">
-  <img src="https://img.shields.io/badge/React-18.3.1-61DAFB?style=for-the-badge&logo=react&logoColor=white" />
-  <img src="https://img.shields.io/badge/Vite-5.4.10-646CFF?style=for-the-badge&logo=vite&logoColor=white" />
-  <img src="https://img.shields.io/badge/Tailwind-3.4.14-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
-  <img src="https://img.shields.io/badge/Node-ES%20Modules-green?style=for-the-badge&logo=node.js&logoColor=white" />
-</p>
+<img src="./src/assets/nuevo%20logo.jpg" alt="TATSoft" height="96" />
 
-## Descripción del Proyecto
+# TATSoft — Sistema de Gestión Empresarial
 
-**TATSoft** es una aplicación web empresarial diseñada para la gestión integral de operaciones comerciales. El sistema permite administrar preventas, ventas, devoluciones, inventario, zonas geográficas, clientes, productos y usuarios a través de una interfaz moderna y responsive.
+[![React](https://img.shields.io/badge/React-18.3.1-61DAFB?style=flat-square&logo=react&logoColor=white)](https://react.dev)
+[![Vite](https://img.shields.io/badge/Vite-5.4.10-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev)
+[![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-3.4.14-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
+[![Node.js](https://img.shields.io/badge/Node.js-18%2B-3c873a?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org)
+[![Azure SWA](https://img.shields.io/badge/Azure-Static%20Web%20Apps-0078D4?style=flat-square&logo=microsoftazure&logoColor=white)](https://azure.microsoft.com/products/app-service/static)
 
-La arquitectura sigue el patrón **Atomic Design** para componentes y está construida sobre una infraestructura de **microservicios** que comunican diferentes dominios de negocio.
+Aplicación web para la gestión integral de operaciones comerciales: preventas, ventas, devoluciones, inventario, zonas geográficas, clientes, productos y usuarios.
 
----
+[Primeros pasos](#primeros-pasos) • [Arquitectura](#arquitectura) • [Módulos](#módulos-funcionales) • [Microservicios](#microservicios) • [Estado del despliegue](#estado-del-despliegue) • [Seguridad](#seguridad-y-autenticación)
 
-## Stack Tecnológico
+</div>
 
-### Core Framework
-| Tecnología | Versión | Propósito |
-|------------|---------|-----------|
-| React | 18.3.1 | Biblioteca UI principal |
-| React DOM | 18.3.1 | Renderizado del DOM |
-| Vite | 5.4.10 | Build tool y dev server |
+## Descripción general
 
-### Routing & State
-| Tecnología | Versión | Propósito |
-|------------|---------|-----------|
-| React Router DOM | 7.1.5 | Navegación SPA |
-| Axios | 1.7.9 | Cliente HTTP para API calls |
+**TATSoft** es el frontend de una plataforma empresarial construida con **React + Vite** y estilizada con **Tailwind CSS**. La interfaz sigue el patrón **Atomic Design** y consume una infraestructura de **microservicios** desplegada en Azure, con control de acceso basado en roles (RBAC) para administradores y colaboradores.
 
-### Styling & UI
-| Tecnología | Versión | Propósito |
-|------------|---------|-----------|
-| Tailwind CSS | 3.4.14 | Framework CSS utilitario |
-| PostCSS | 8.4.49 | Procesamiento CSS |
-| Autoprefixer | 10.4.20 | Prefijos automáticos CSS |
-| Lucide React | 0.475.0 | Iconos vectoriales |
-| React Icons | 5.4.0 | Biblioteca de iconos |
-| FontAwesome | 6.7.1 | Iconos adicionales |
+> [!IMPORTANT]
+> El proyecto se encuentra en **pausa**: las cuentas de los servicios en Azure están suspendidas por falta de pago de los créditos. Consulta la sección [Estado del despliegue](#estado-del-despliegue) antes de intentar desplegar o conectar con las APIs.
 
-### Mapas y Geolocalización
-| Tecnología | Versión | Propósito |
-|------------|---------|-----------|
-| Leaflet | 1.9.4 | Mapas interactivos |
-| React-Leaflet | 4.2.1 | Integración Leaflet-React |
-| React-Leaflet-Draw | 0.20.4 | Dibujo de polígonos en mapas |
-| Google Maps API | 2.20.6 | Servicios de Google Maps |
+## Primeros pasos
 
-### Visualización de Datos
-| Tecnología | Versión | Propósito |
-|------------|---------|-----------|
-| Recharts | 2.15.1 | Gráficos y estadísticas |
-| React DatePicker | 8.2.1 | Selector de fechas |
-| React Loader Spinner | 6.1.6 | Indicadores de carga |
+### Requisitos previos
 
-### Development Tools
-| Tecnología | Versión | Propósito |
-|------------|---------|-----------|
-| ESLint | 9.13.0 | Linter de código |
-| @vitejs/plugin-react | 4.3.3 | Plugin React para Vite |
-| Globals | 15.11.0 | Variables globales para ESLint |
-
----
-
-## Arquitectura de la Aplicación
-
-### Estructura de Carpetas
-
-```
-frontend_tatsoft/
-├── public/                 # Assets estáticos
-├── src/
-│   ├── components/         # Componentes React
-│   │   ├── atoms/         # Componentes atómicos (botones, inputs)
-│   │   ├── molecules/     # Componentes moleculares (formularios)
-│   │   ├── organisms/     # Componentes organismos (headers, cards)
-│   │   ├── pages/         # Páginas completas
-│   │   └── Loading/       # Componentes de carga
-│   ├── context/           # Context API
-│   │   ├── AuthContext.jsx    # Contexto de autenticación
-│   │   ├── services/          # Servicios API
-│   │   │   ├── ApiService.js  # Lógica de llamadas HTTP
-│   │   │   └── ImageService.js # Gestión de imágenes
-│   │   ├── feature/           # Features por dominio
-│   │   ├── hooks/             # Custom hooks
-│   │   ├── style/             # Estilos compartidos
-│   │   └── utils/             # Utilidades
-│   ├── assets/            # Recursos estáticos
-│   ├── App.jsx            # Componente raíz con rutas
-│   ├── main.jsx           # Punto de entrada
-│   └── index.css          # Estilos globales
-├── index.html             # HTML template
-├── vite.config.js         # Configuración Vite + Proxies
-├── tailwind.config.js     # Configuración Tailwind
-├── postcss.config.cjs     # Configuración PostCSS
-├── eslint.config.js       # Configuración ESLint
-├── staticwebapp.config.json  # Config Azure Static Web Apps
-└── package.json           # Dependencias
-```
-
-### Módulos Funcionales
-
-| Módulo | Descripción | Componentes Principales |
-|--------|-------------|---------------------------|
-| **Autenticación** | Login, recuperación de contraseña | Login, RecuperarPassword, CodigoVerificacion, Restablecer |
-| **Administrador** | Gestión de usuarios y solicitudes | GestionUsuarios, RegistroUsuario, EditarUsuario, VerUsuarioAdm, ListaSolicitudes, DetalleSolicitud |
-| **Zonas** | Gestión geográfica de territorios | Zonas, MisZonas, GestionZonas, RegistrarZona, EditarZona, ColaboradoresZona, AsignacionZonas |
-| **Clientes** | CRM y registro de clientes | GestionClientes, RegistroCliente, EditarCliente, VerCliente, SolicitudRegistroCliente |
-| **Productos** | Catálogo y categorías | GestionProductos, ProductList, RegistrarProducto, EditarProducto, GestionCategorias |
-| **Inventario** | Control de stock | IngresoStock, HistorialIngresos |
-| **Preventas** | Gestión de pedidos anticipados | NuevaPreventa, HistorialPreventas, DetallesPreventa, ConfirmarPreventa, Preventa |
-| **Ventas** | Registro y historial de ventas | HistorialVentas, DetallesVenta |
-| **Devoluciones** | Gestión de retornos y créditos | HistorialDevoluciones, DetallesDevolucion, ComparativaVentasDevoluciones, ResumenDevoluciones |
-| **Estadísticas** | Dashboards y reportes | EstadisticasVentas, EstadisticasColaborador, RolBasedStats |
-| **Colaborador** | Perfil de usuario | Profile, EditarPerfil, Acumulados |
-
-### Flujo de Datos
-
-```
-Componente (UI)
-    ↓
-AuthContext (Estado de sesión)
-    ↓
-ApiService (HTTP Client)
-    ↓
-Vite Proxy (Redirección de rutas)
-    ↓
-Microservicios Azure (Backend)
-```
-
----
-
-## Microservicios Integrados
-
-La aplicación se comunica con 5 microservicios independientes desplegados en **Azure App Services**:
-
-| Microservicio | Ruta Local | URL Azure | Dominio |
-|--------------|------------|-----------|---------|
-| **Auth Service** | `/auth-api/*` | `tatsoftmicroserviceauth-*.azurewebsites.net` | Autenticación y autorización |
-| **Users Service** | `/users-api/*` | `tatsoftgestionusuarios-*.azurewebsites.net` | Gestión de usuarios y roles |
-| **Areas Service** | `/areas-api/*` | `backendareasandclients-*.azurewebsites.net` | Zonas geográficas y clientes |
-| **Products Service** | `/products-api/*` | `backendproducts-*.azurewebsites.net` | Catálogo de productos |
-| **Presales Service** | `/presales-api/*` | `backendpresalessalereturns-*.azurewebsites.net` | Preventas, ventas y devoluciones |
-
-### Configuración de Proxy (vite.config.js)
-
-```javascript
-proxy: {
-  '/auth-api': {
-    target: 'https://tatsoftmicroserviceauth-...azurewebsites.net',
-    changeOrigin: true,
-    rewrite: (path) => path.replace(/^\/auth-api/, ''),
-  },
-  '/users-api': { ... },
-  '/areas-api': { ... },
-  '/products-api': { ... },
-  '/presales-api': { ... },
-}
-```
-
----
-
-## Instrucciones de Instalación y Uso
-
-### Prerrequisitos
-
-- Node.js 18.x o superior
+- [Node.js](https://nodejs.org/en/download) 18.x o superior
 - npm 9.x o superior
+- Git
 
 ### Instalación
 
@@ -179,90 +42,134 @@ cd frontend_tatsoft
 # 2. Instalar dependencias
 npm install
 
-# 3. Iniciar servidor de desarrollo
+# 3. Iniciar el servidor de desarrollo
 npm run dev
 ```
 
-### Scripts Disponibles
+El servidor se inicia en `http://localhost:5173`. Los proxies definidos en `vite.config.js` redirigen automáticamente las llamadas `/auth-api`, `/users-api`, `/areas-api`, `/products-api` y `/presales-api` hacia los microservicios correspondientes.
+
+### Scripts disponibles
 
 | Comando | Descripción |
-|---------|-------------|
-| `npm run dev` | Inicia el servidor de desarrollo con Vite |
-| `npm run build` | Genera el bundle de producción |
-| `npm run preview` | Previsualiza la build de producción localmente |
-| `npm run lint` | Ejecuta ESLint para análisis de código |
+| --- | --- |
+| `npm run dev` | Inicia el servidor de desarrollo con Vite. |
+| `npm run build` | Genera el bundle de producción en `dist/`. |
+| `npm run preview` | Previsualiza localmente la build de producción. |
+| `npm run lint` | Ejecuta ESLint sobre el código fuente. |
 
-### Configuración de Desarrollo Local
+## Stack tecnológico
 
-El servidor de desarrollo se inicia por defecto en `http://localhost:5173`. Los proxies configurados en `vite.config.js` redirigirán automáticamente las llamadas API a los microservicios correspondientes.
+| Área | Tecnologías |
+| --- | --- |
+| **Core** | React 18.3.1, React DOM 18.3.1, Vite 5.4.10 |
+| **Routing y HTTP** | React Router DOM 7.1.5, Axios 1.7.9 |
+| **Estilos e iconos** | Tailwind CSS 3.4.14, PostCSS, Autoprefixer, Lucide React, React Icons, FontAwesome |
+| **Mapas** | Leaflet 1.9.4, React-Leaflet 4.2.1, React-Leaflet-Draw, Google Maps API |
+| **Visualización** | Recharts 2.15.1, React DatePicker, React Loader Spinner |
+| **Calidad de código** | ESLint 9.13.0, plugins de React y hooks |
+
+## Arquitectura
+
+### Estructura de carpetas
+
+```
+frontend_tatsoft/
+├── public/                     # Assets estáticos
+├── src/
+│   ├── components/
+│   │   ├── atoms/              # Componentes básicos (botones, inputs, logo)
+│   │   ├── molecules/          # Combinaciones de átomos (buscador, encabezado)
+│   │   ├── organisms/          # Secciones completas (sidebar, formularios, cards)
+│   │   ├── pages/              # Páginas y vistas por dominio
+│   │   └── Loading/            # Indicadores de carga
+│   ├── context/
+│   │   ├── AuthContext.jsx     # Estado global de sesión
+│   │   └── services/
+│   │       ├── ApiService.js   # Clientes HTTP de los microservicios
+│   │       └── ImageService.js # Gestión de imágenes
+│   ├── assets/                 # Recursos (logo, imágenes)
+│   ├── App.jsx                 # Definición de rutas y rutas protegidas
+│   ├── main.jsx                # Punto de entrada
+│   └── index.css               # Estilos globales
+├── index.html
+├── vite.config.js              # Configuración de Vite y proxies
+├── tailwind.config.js
+├── postcss.config.cjs
+├── eslint.config.js
+└── staticwebapp.config.json    # Configuración de Azure Static Web Apps
+```
+
+### Flujo de datos
+
+```
+Componente (UI)
+      ↓
+AuthContext (sesión y roles)
+      ↓
+ApiService (Axios + interceptor de token)
+      ↓
+Proxy de Vite (dev) / URL directa (prod)
+      ↓
+Microservicios en Azure
+```
+
+## Módulos funcionales
+
+| Módulo | Descripción | Componentes principales |
+| --- | --- | --- |
+| **Autenticación** | Login y recuperación de contraseña | `Login`, `RecuperarPassword`, `CodigoVerificacion`, `Restablecer` |
+| **Usuarios** | Gestión de cuentas y solicitudes | `GestionUsuarios`, `RegistroUsuario`, `EditarUsuario`, `ListaSolicitudes` |
+| **Zonas** | Territorios geográficos y asignaciones | `GestionZonas`, `RegistrarZona`, `ColaboradoresZona`, `AsignacionZonas` |
+| **Clientes** | CRM y registro de clientes | `GestionClientes`, `RegistroCliente`, `EditarCliente`, `VerCliente` |
+| **Productos** | Catálogo y categorías | `GestionProductos`, `RegistrarProducto`, `EditarProducto`, `GestionCategorias` |
+| **Inventario** | Control de stock | `IngresoStock`, `HistorialIngresos` |
+| **Preventas** | Pedidos anticipados | `NuevaPreventa`, `HistorialPreventas`, `ConfirmarPreventa` |
+| **Ventas** | Registro e historial | `HistorialVentas`, `DetallesVenta` |
+| **Devoluciones** | Retornos y créditos | `HistorialDevoluciones`, `ComparativaVentasDevoluciones`, `ResumenDevoluciones` |
+| **Estadísticas** | Dashboards y reportes | `RolBasedStats`, `EstadisticasVentas`, `EstadisticasColaborador` |
+| **Colaborador** | Perfil y acumulados | `Profile`, `EditarPerfil`, `Acumulados` |
+
+## Microservicios
+
+La aplicación se comunica con cinco microservicios independientes desplegados en **Azure App Services**, cada uno responsable de un dominio de negocio:
+
+| Microservicio | Prefijo local | Dominio |
+| --- | --- | --- |
+| **Auth** | `/auth-api/*` | Autenticación y emisión de tokens |
+| **Users** | `/users-api/*` | Usuarios, roles y asignación de zonas |
+| **Areas & Clients** | `/areas-api/*` | Zonas geográficas y clientes |
+| **Products** | `/products-api/*` | Catálogo, categorías y stock |
+| **Presales** | `/presales-api/*` | Preventas, ventas y devoluciones |
+
+En desarrollo, `ApiService.js` usa estos prefijos y Vite los redirige a cada backend. En producción, `ApiService.js` apunta directamente a las URLs de Azure App Services.
+
+## Estado del despliegue
+
+La infraestructura de despliegue está **correctamente implementada y validada**. El pipeline de CI/CD (`.github/workflows/azure-static-web-apps-*.yml`) publica el frontend en **Azure Static Web Apps** y los cinco microservicios operan en **Azure App Services** con proxies y `staticwebapp.config.json` ya configurados para producción.
+
+> [!WARNING]
+> **Despliegue temporalmente en pausa.** El proyecto se encuentra momentáneamente suspendido porque **el pago de los créditos de los servicios de Azure está en pausa**. No se trata de un problema de código ni de arquitectura: tanto el frontend como los microservicios están listos y funcionales, pero los recursos de Azure están detenidos por el estado de la suscripción.
+
+Consecuencias mientras la suscripción permanezca pausada:
+
+- Las URLs de **Azure Static Web Apps** (frontend) no están accesibles.
+- Los microservicios en **Azure App Services** están suspendidos.
+- Las llamadas a las APIs devuelven errores de conexión, por lo que la aplicación no puede autenticar usuarios ni cargar datos.
+
+Una vez se restablezca el pago de los créditos, el despliegue puede reanudarse sin cambios de código, reejecutando el workflow de CI/CD y reactivando los App Services.
+
+## Seguridad y autenticación
+
+- **Rutas protegidas**: el componente `ProtectedRoute` valida la sesión y el rol antes de renderizar cada vista (`App.jsx`).
+- **Contexto centralizado**: `AuthContext` administra el token (persistido en `localStorage`) y el perfil del usuario.
+- **Interceptor de token**: cada cliente Axios inyecta el header `Authorization: Bearer <token>` de forma automática.
+- **Roles soportados**: `ADMINISTRADOR` y `COLABORADOR`, con rutas restringidas según el rol.
+- **Configuración de seguridad**: `staticwebapp.config.json` define cabeceras de seguridad, CORS y redirección de sesiones no autorizadas hacia `/login`.
 
 ---
 
-## Estado Actual y Despliegue 
+<div align="center">
 
-### Integración de Microservicios
+**TATSoft** — Gestión empresarial inteligente
 
-**Funcional**: La integración de los diferentes microservicios (Auth, Users, Areas, Products, Presales) es completamente funcional y ha sido validada en entornos de desarrollo y producción.
-
-### Estado de Despliegue
-
-**Temporalmente Fuera de Línea**: Aunque el código base del frontend y el backend es completamente funcional, **el despliegue tanto del frontend como de los microservicios backend se encuentra temporalmente offline**.
-
-**Causa**: Expiración de los créditos de la suscripción de Microsoft Azure.
-
-**Impacto**:
-- Las URLs de Azure Static Web Apps (frontend) no están accesibles
-- Los microservicios en Azure App Services están suspendidos
-- Las APIs retornan errores de conexión
-
-### Roadmap / Versión v2 
-
-Para la próxima fase del proyecto (v2), se planea una **migración completa de infraestructura**:
-
-- **Se mantiene**: La lógica de negocio y arquitectura de microservicios
-- **Se mantiene**: El código del frontend React + Vite
-- **Se sustituye**: Los servicios de Azure por nuevos proveedores de despliegue (por determinar: AWS, Google Cloud, Railway, Render, etc.)
-- **Objetivo**: Optimizar costos operativos y garantizar alta disponibilidad
-
-**Estado de migración**: En fase de evaluación de proveedores alternativos.
-
----
-
-## Seguridad y Autenticación
-
-- **Protección de Rutas**: Sistema de rutas protegidas con `ProtectedRoute` basado en roles
-- **Contexto de Autenticación**: `AuthContext` centraliza el estado de sesión
-- **Roles Soportados**: La aplicación implementa control de acceso basado en roles (RBAC)
-
----
-
-## Contribución
-
-Este proyecto es parte del ecosistema TATSoft. Para contribuir:
-
-1. Realizar fork del repositorio
-2. Crear una rama feature (`git checkout -b feature/nueva-funcionalidad`)
-3. Commit de cambios (`git commit -am 'Agrega nueva funcionalidad'`)
-4. Push a la rama (`git push origin feature/nueva-funcionalidad`)
-5. Abrir un Pull Request
-
----
-
-## Licencia
-
-Proyecto propietario - TATSoft. Todos los derechos reservados.
-
----
-
-## Contacto
-
-Para más información sobre el proyecto o la migración de infraestructura:
-
-- **Repositorio**: [GitHub - frontend_tatsoft](https://github.com/JhoamSebastianMunoz/frontend_tatsoft)
-- **Estado del Despliegue**: Ver sección "Estado Actual y Despliegue" arriba
-
----
-
-<p align="center">
-  <strong>TATSoft</strong> - Gestión Empresarial Inteligente
-</p>
+</div>
